@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block title %}Cart{% endblock %}
+
+{% block content %}
+<h2>Your Cart</h2>
+<div>
+    {% if no_items %}
+    <p>You have no items in your cart.</p>
+    {% else %}
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart_items %}
+            <tr>
+                <td>{{ item.product_name }}</td>
+                <td>Rs{{ item.price }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>Rs{{ item.price * item.quantity }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p>Total Amount: Rs{{ total_amount }}</p>
+    <button><a href="{{ url_for('home') }}">Continue Shopping</a></button>
+    <button><a href="{{ url_for('checkout') }}">Place Order</a></button>
+    {% endif %}
+</div>
+{% endblock %}

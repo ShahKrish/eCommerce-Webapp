@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stationary Store</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style2.css') }}">
+
+</head>
+<body>
+    <h1>Welcome to the Stationary Store</h1>
+    <div class="product-container">
+        <div class="product">
+            <img src="pen.jpg" alt="Pen">
+            <h2>Pen</h2>
+            <p>Price: $1.99</p>
+            <label for="pen-quantity">Quantity:</label>
+            <input type="number" id="pen-quantity" value="0">
+            <button onclick="addToCart('Pen', 1.99, 'pen-quantity')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="notebook.jpg" alt="Notebook">
+            <h2>Notebook</h2>
+            <p>Price: $2.49</p>
+            <label for="notebook-quantity">Quantity:</label>
+            <input type="number" id="notebook-quantity" value="0">
+            <button onclick="addToCart('Notebook', 2.49, 'notebook-quantity')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="pencil.jpg" alt="Pencil">
+            <h2>Pencil</h2>
+            <p>Price: $0.99</p>
+            <label for="pencil-quantity">Quantity:</label>
+            <input type="number" id="pencil-quantity" value="0">
+            <button onclick="addToCart('Pencil', 0.99, 'pencil-quantity')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="eraser.jpg" alt="Eraser">
+            <h2>Eraser</h2>
+            <p>Price: $0.49</p>
+            <label for="eraser-quantity">Quantity:</label>
+            <input type="number" id="eraser-quantity" value="0">
+            <button onclick="addToCart('Eraser', 0.49, 'eraser-quantity')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="ruler.jpg" alt="Ruler">
+            <h2>Ruler</h2>
+            <p>Price: $1.29</p>
+            <label for="ruler-quantity">Quantity:</label>
+            <input type="number" id="ruler-quantity" value="0">
+            <button onclick="addToCart('Ruler', 1.29, 'ruler-quantity')">Add to Cart</button>
+        </div>
+    </div>
+
+    <h2>Your Cart</h2>
+    <ul id="cart"></ul>
+
+    <script>
+        function addToCart(productName, price, quantityId) {
+            const cart = document.getElementById("cart");
+            const quantity = document.getElementById(quantityId).value;
+            if (quantity > 0) {
+                const item = document.createElement("li");
+                item.textContent = `${productName} - $${price} x ${quantity} = $${(price * quantity).toFixed(2)}`;
+                cart.appendChild(item);
+            }
+        }
+    </script>
+</body>
+</html>
